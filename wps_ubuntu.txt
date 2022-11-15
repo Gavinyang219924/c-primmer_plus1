@@ -1,0 +1,14 @@
+1.官网下载wps安装包，下载地址：http://linux.wps.cn/，最新版是wps-office_11.1.0.10161_amd64.deb,其他32位机型的下载相应的文件。
+2.下载wps安装依赖包libpng12 ，下载地址： http://packages.ubuntu.com/xenial/amd64/libpng12-0/download
+3.下载wps系统字体缺失包，下载地址：链接: https://pan.baidu.com/s/1MpMTMwTPmedawpTl0LOEKg 提取码: mu3g
+阿弥陀佛，只可用于个人用途和测试。
+4.安装wps安装依赖包libpng12,安装命令： sudo dpkg -i libpng12-0_1.2.49-1+deb7u2_amd64.deb
+5.安装wps官方包，安装命令： sudo dpkg -i wps-office_11.1.0.10161_amd64.deb
+6.解压wps系统字体包到任意目录，复制该目录的所有文件到/usr/share/fonts， 复制命令：sudo cp * /usr/share/fonts
+7.执行以下命令,生成字体的索引信息： sudo mkfontscale sudo mkfontdir
+8.运行fc-cache命令更新字体缓存： sudo fc-cache
+9.运行wps，完美收工。
+10.其他linux发行版安装wps也可参考。
+————————————————
+版权声明：本文为CSDN博主「nicksonhg」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/nicksonhg/article/details/115277518
