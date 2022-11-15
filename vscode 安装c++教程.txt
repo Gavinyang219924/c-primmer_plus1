@@ -1,0 +1,76 @@
+进入应用商店搜索visual studio code并点击install进行安装
+sudo apt-get update
+sudo apt-get install gcc
+sudo apt-get install g++
+sudo apt-get install gdb
+gcc -v
+gdb -v
+g++ --version
+打开Vs Code搜索安装C/C++和Code Runner插件
+因为安装了Code Runner插件,就可以直接运行程序了(但是还不能进行调试),下面演示如何利用Code Runner运行程序
+https://www.zhihu.com/question/24867368
+新建文件夹--文件夹下新建.vscode文件夹；launch.json；tasks.json(都在vscode下)
+根目录新建test.cpp;
+launch.json ：
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C/C++",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "preLaunchTask": "compile",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
+task.json
+{
+    "version": "2.0.0",
+    "tasks": [{
+            "label": "compile",
+            "command": "g++",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
+爬虫断电调试；点击添加第一个：c++ gdb启动；然后手动编译，看看以后能不能执行按f5或者调试的三角符号直接生成结果。
+
+
